@@ -46,7 +46,7 @@ onMounted(()=> {
       <li class="mr-9 ml-1 flex">
         <img src="/imgs/arrow-down.png" class="switch-arrow w-5 h-3 object-contain">
       </li>
-      <el-icon :size="20" class="cursor-pointer" @click="screen"><FullScreen /></el-icon>
+      <el-icon :size="20" class="cursor-pointer" @click="screen" @keydown.esc.native><FullScreen /></el-icon>
       <li class="flex">
         <img src="/imgs/theme@2x.png" class="skin w-5 h-5 ml-1">
       </li>

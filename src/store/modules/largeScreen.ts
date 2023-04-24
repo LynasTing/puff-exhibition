@@ -25,6 +25,14 @@ export default defineStore('largeScreen', {
     statisticAsset: {} as AssetType
   }),
   actions: {
+    // getNumber() {
+    //   this.nearlySevenCombo.yShaft[2] = Number(this.nearlySevenCombo.yShaft[2]) + 30
+    //   this.nearlySevenChangeBattery.yShaft[2] = Number(this.nearlySevenChangeBattery.yShaft[2]) + 30
+    //   this.nearlySevenUser.yShaft[2] = Number(this.nearlySevenUser.yShaft[2]) + 30
+    //   this.nearlySevenUseBattery.yShaft[2] = Number(this.nearlySevenUseBattery.yShaft[2]) + 30
+    //   this.statisticAsset.cabinet.total += 5
+    //   this.statisticToday.electricity = Number(this.statisticToday.electricity) + 8 
+    // },
     // 总数据
     async getTotalData() {
       const res = await _request.get<ApiRes<LineDataType>>('/openData/statisticTotalData')
@@ -37,16 +45,25 @@ export default defineStore('largeScreen', {
     },
     // 近7天套餐收益
     async getSevenCombo() {
+      function sortDate(a, b) {
+        return Date.parse(a) - Date.parse(b)
+      }
+      this.nearlySevenCombo = {
+        xShaft: [],
+        yShaft: []
+      }
       let res = await _request.get<ApiRes<LineDataType>>('openData/chartComboTenDays')
-      const newRes = Object.entries(res).splice(3, 9)
+      const newRes = Object.keys(res).sort(sortDate).splice(3, 9)
       newRes.forEach(item => {
-        if(item[0][8] === '0') {
-          item[0] = item[0].substring(9) + '日'
+        Object.entries(res).forEach(sub => {
+          if(sub[0] == item) this.nearlySevenCombo.yShaft.push(sub[1])
+        })
+        if(item[8] === '0') {
+          item = item.substring(9) + '日'
         }else {
-          item[0] = item[0].substring(8) + '日'
+          item = item.substring(8) + '日'
         }
-        this.nearlySevenCombo.xShaft.push(item[0])
-        this.nearlySevenCombo.yShaft.push(item[1])
+        this.nearlySevenCombo.xShaft.push(item)
       })
       this.nearlySevenCombo.xShaft.unshift('')
       this.nearlySevenCombo.xShaft.push('')
@@ -55,16 +72,25 @@ export default defineStore('largeScreen', {
     },
     // 近7天换电量数据
     async getSevenChange() {
+      function sortDate(a, b) {
+        return Date.parse(a) - Date.parse(b)
+      }
+      this.nearlySevenChangeBattery =  {
+        xShaft: [],
+        yShaft: []
+      }
       const res = await _request.get<ApiRes<LineDataType>>('/openData/chartExchangTenDays')
-      const newRes = Object.entries(res).splice(3, 9)
+      const newRes = Object.keys(res).sort(sortDate).splice(3, 9)
       newRes.forEach(item => {
-        if(item[0][8] === '0') {
-          item[0] = item[0].substring(9) + '日'
+        Object.entries(res).forEach(sub => {
+          if(sub[0] == item) this.nearlySevenChangeBattery.yShaft.push(sub[1])
+        })
+        if(item[8] === '0') {
+          item = item.substring(9) + '日'
         }else {
-          item[0] = item[0].substring(8) + '日'
+          item = item.substring(8) + '日'
         }
-        this.nearlySevenChangeBattery.xShaft.push(item[0])
-        this.nearlySevenChangeBattery.yShaft.push(item[1])
+        this.nearlySevenChangeBattery.xShaft.push(item)
       })
       this.nearlySevenChangeBattery.xShaft.unshift('-')
       this.nearlySevenChangeBattery.xShaft.push('-')
@@ -78,16 +104,25 @@ export default defineStore('largeScreen', {
     },
     // 近7天用户数据
     async getSevenUser() {
+      function sortDate(a, b) {
+        return Date.parse(a) - Date.parse(b)
+      }
+      this.nearlySevenUser = {
+        xShaft: [],
+        yShaft: []
+      }
       const res = await _request.get<ApiRes<LineDataType>>('/openData/chartUserTenDays')
-      const newRes = Object.entries(res).splice(3, 9)
+      const newRes = Object.keys(res).sort(sortDate).splice(3, 9)
       newRes.forEach(item => {
-        if(item[0][8] === '0') {
-          item[0] = item[0].substring(9) + '日'
+        Object.entries(res).forEach(sub => {
+          if(sub[0] == item) this.nearlySevenUser.yShaft.push(sub[1])
+        })
+        if(item[8] === '0') {
+          item = item.substring(9) + '日'
         }else {
-          item[0] = item[0].substring(8) + '日'
+          item = item.substring(8) + '日'
         }
-        this.nearlySevenUser.xShaft.push(item[0])
-        this.nearlySevenUser.yShaft.push(item[1])
+        this.nearlySevenUser.xShaft.push(item)
       })
       this.nearlySevenUser.xShaft.unshift('-')
       this.nearlySevenUser.xShaft.push('-')
@@ -96,16 +131,25 @@ export default defineStore('largeScreen', {
     },
     // 近7天使用电池
     async getSevenUseBattery() {
+      function sortDate(a, b) {
+        return Date.parse(a) - Date.parse(b)
+      }
+      this.nearlySevenUseBattery = {
+        xShaft: [],
+        yShaft: []
+      }
       const res = await _request.get<ApiRes<LineDataType>>('/openData/chartBatteryTenDays')
-      const newRes = Object.entries(res).splice(3, 9)
+      const newRes = Object.keys(res).sort(sortDate).splice(3, 9)
       newRes.forEach(item => {
-        if(item[0][8] === '0') {
-          item[0] = item[0].substring(9) + '日'
+        Object.entries(res).forEach(sub => {
+          if(sub[0] == item) this.nearlySevenUseBattery.yShaft.push(sub[1])
+        })
+        if(item[8] === '0') {
+          item = item.substring(9) + '日'
         }else {
-          item[0] = item[0].substring(8) + '日'
+          item = item.substring(8) + '日'
         }
-        this.nearlySevenUseBattery.xShaft.push(item[0])
-        this.nearlySevenUseBattery.yShaft.push(item[1])
+        this.nearlySevenUseBattery.xShaft.push(item)
       })
       this.nearlySevenUseBattery.xShaft.unshift('-')
       this.nearlySevenUseBattery.xShaft.push('-')

@@ -1,6 +1,8 @@
 import axios, { AxiosError } from 'axios'
+console.log(`当前环境process.env.NODE_ENV + ::>>`, import.meta.env.VITE_BASE_API)
 const _request = axios.create({
-  baseURL: 'http://fz.hthuandian.cn/analyse',
+  // baseURL: import.meta.env.VITE_BASE_API,
+  baseURL: 'http://hthd.hthuandian.cn/analyse/',
   timeout: 5000
 })
 
@@ -12,7 +14,7 @@ _request.interceptors.request.use(
   },
   function (error) {
     // 对请求错误做些什么
-    return Promise.reject(error)
+    console.log(`error.request + ::>>`, error)
   }
 )
 
@@ -29,7 +31,6 @@ _request.interceptors.response.use(
     }else {
       console.log(`error.response.data.message + ::>>`, error.response.data.message)
     }
-    return Promise.reject(error)
   }
 )
 export default _request

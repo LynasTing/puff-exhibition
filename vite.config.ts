@@ -20,7 +20,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()]
     })
   ],
-  base: process.env.NODE_ENV === 'production' ? '/dist/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/bi/' : '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
@@ -43,7 +43,8 @@ export default defineConfig({
     cors: true, // 允许ajax跨域
     proxy: {
       '/openData': {
-        target: `http://fz.hthuandian.cn/analyse`,
+        // target: `http://fz.hthuandian.cn/analyse`,
+        target: `http://hthd.hthuandian.cn/analyse`,
         changeOrigin: true, // 是否跨域
         rewrite: (path) => path.replace('/^\/openData/', '')
         // ws: true,  // 如果要代理 websockets,需要配置这个参数

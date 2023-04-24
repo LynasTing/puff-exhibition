@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script lang="ts" setup name="AMap">
 /**
  *@html5 新增的语义化标签
  *@aside	定义文章。
@@ -27,13 +27,16 @@
   */
 
 
-import Resources from '@/views/chart-overview/components/resources/index.vue'
-import ChartMode from '@/views/chart-overview/components/chart-mode/index.vue'
-import UserBattery from '@/views/chart-overview/components/user-battery/index.vue'
-import Header from '@/views/chart-overview/components/header/index.vue'
+import Resources from '@/views/chart-overview-amap/components/resources/index.vue'
+import ChartMode from '@/views/chart-overview-amap/components/chart-mode/index.vue'
+import UserBattery from '@/views/chart-overview-amap/components/user-battery/index.vue'
+import Header from '@/views/chart-overview-amap/components/header/index.vue'
 </script>
 
 <template>
+  <RouterView>
+    
+  </RouterView>
   <div class="lay-container">
     <Header />
     <main class="main px-5 pb-5 flex">
