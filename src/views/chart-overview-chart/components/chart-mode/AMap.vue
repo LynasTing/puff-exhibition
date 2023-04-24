@@ -1,4 +1,4 @@
-<script setup lang="ts" name="EchartsMapCopy">
+<script setup lang="ts" name="AMap">
   import AMapLoader from "@amap/amap-jsapi-loader"
   import { ApiRes, SiteData } from '@/types/data'
   import _request from '@/utils/request'
@@ -70,7 +70,7 @@
       }})
       map.value = new AMap.Map('lbsMap', {
         viewMode: '2D', 
-        zoom: 12, 
+        zoom: 10, 
         icon: markIcon,
         mapStyle: 'amap://styles/whitesmoke', //设置地图的显示样式
         center: iconLocation[0]

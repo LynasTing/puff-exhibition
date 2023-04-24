@@ -4,8 +4,7 @@ import { TooltipComponent, TitleComponent, TooltipComponentOption, LegendCompone
 import { PieChart, PieSeriesOption } from 'echarts/charts'
 import { LabelLayout } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
-import EChartMapCopy from '@/views/chart-overview-amap/components/chart-mode/EchartMapCopy.vue'
-// import EChartMap from '@/views/chart-overview-chart/components/chart-mode/EchartMap.vue'
+import ChartMap from '@/views/chart-overview-amap/components/chart-mode/ChartMap.vue'
 import useStore from '@/store'
 echarts.use([TooltipComponent, LegendComponent, PieChart, CanvasRenderer, LabelLayout, TitleComponent])
 type EChartsOption = echarts.ComposeOption<TooltipComponentOption | LegendComponentOption | PieSeriesOption>
@@ -382,8 +381,7 @@ onUnmounted(() => {
     </ul>
     <!-- 中 -->
     <div class="map-box my-5 flex-1 ">
-      <EChartMapCopy /> 
-      <!-- <EChartMap /> -->
+      <ChartMap /> 
     </div>
     <!-- 下 -->
     <ul class="bottom-pie flex justify-between">

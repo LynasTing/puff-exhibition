@@ -1,5 +1,5 @@
 
-<script setup lang="ts" name="EChartMap">
+<script setup lang="ts" name="ChartMap">
 import { ApiRes, SiteData } from '@/types/data'
 import _request from '@/utils/request'
 import * as echarts from 'echarts'
