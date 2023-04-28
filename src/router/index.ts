@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import Layout from '@/views/layout/index.vue'
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/',
@@ -17,8 +17,7 @@ const router = createRouter({
           component: () => import('@/views/chart-overview-chart/index.vue')
         }
       ]
-    },
-   
+    }
   ]
 })
 export default router

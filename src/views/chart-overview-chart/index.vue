@@ -25,8 +25,6 @@
   * @series	系列
   * @data	数据
   */
-
-
 import Resources from '@/views/chart-overview-chart/components/resources/index.vue'
 import ChartMode from '@/views/chart-overview-chart/components/chart-mode/index.vue'
 import UserBattery from '@/views/chart-overview-chart/components/user-battery/index.vue'
