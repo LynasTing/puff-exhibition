@@ -20,7 +20,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()]
     })
   ],
-  base: process.env.NODE_ENV === 'production' ? '/bi/' : '/',
+  base: process.env.NODE_ENV === 'production' ? './' : '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
