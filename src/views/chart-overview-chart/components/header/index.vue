@@ -39,7 +39,7 @@ onMounted(()=> {
       {{ nowTime || '2023-04-18 22:66:22'}}
     </div>
     <h1 class="text-5xl text-center pr-3">
-      左海河豚换电数据大屏
+      城市网格监测系统
     </h1>
     <ul class="flex justify-end leading-4 space-x-2">
       <li class="area">福州</li>
